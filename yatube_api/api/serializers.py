@@ -3,22 +3,25 @@ from rest_framework import serializers
 
 
 class PostSerializer(serializers.ModelSerializer):
+    """Сериализатор данных из модели Post"""
     author = serializers.StringRelatedField(read_only=True)
 
     class Meta:
         model = Post
-        fields = ('id', 'text', 'author', 'image', 'group', 'pub_date')
+        fields = '__all__'
 
 
 class CommentSerializer(serializers.ModelSerializer):
+    """Сериализатор данных из модели Comment"""
     author = serializers.StringRelatedField(read_only=True)
 
     class Meta:
         model = Comment
-        fields = ('id', 'author', 'post', 'text', 'created')
+        fields = '__all__'
 
 
 class GroupSerializer(serializers.ModelSerializer):
+    """Сериализатор данных из модели Group"""
     class Meta:
         model = Group
-        fields = ('title', 'slug', 'description')
+        fields = '__all__'
